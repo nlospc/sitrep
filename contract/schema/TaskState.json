@@ -1,0 +1,15 @@
+{
+  "$ref": "#/definitions/TaskState",
+  "definitions": {
+    "TaskState": {
+      "type": "string",
+      "enum": [
+        "todo",
+        "in_progress",
+        "blocked",
+        "done"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

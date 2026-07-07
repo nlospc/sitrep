@@ -1,0 +1,270 @@
+{
+  "$ref": "#/definitions/Job",
+  "definitions": {
+    "Job": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "enqueued_at": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "kind": {
+              "type": "string",
+              "const": "extract"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "capture_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "raw_text": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type_hint": {
+                  "type": "string",
+                  "enum": [
+                    "task",
+                    "status_update",
+                    "risk",
+                    "decision",
+                    "meeting_notes",
+                    "idea"
+                  ]
+                },
+                "mentioned_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                },
+                "is_batch": {
+                  "type": "boolean"
+                },
+                "captured_at": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "capture_id",
+                "raw_text",
+                "mentioned_refs",
+                "is_batch",
+                "captured_at"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "enqueued_at",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/Job/anyOf/0/properties/id"
+            },
+            "enqueued_at": {
+              "$ref": "#/definitions/Job/anyOf/0/properties/enqueued_at"
+            },
+            "kind": {
+              "type": "string",
+              "const": "report_request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "morning_digest",
+                    "weekly_report"
+                  ]
+                },
+                "scope": {
+                  "type": "object",
+                  "properties": {
+                    "project_ref": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "overnight_changes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "entity_ref": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "entity_kind": {
+                            "type": "string",
+                            "enum": [
+                              "project",
+                              "milestone",
+                              "task"
+                            ]
+                          },
+                          "summary": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "proposal_id": {
+                            "type": "string",
+                            "format": "uuid"
+                          }
+                        },
+                        "required": [
+                          "entity_ref",
+                          "entity_kind",
+                          "summary",
+                          "proposal_id"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "tasks_due_today": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "uuid"
+                      }
+                    },
+                    "pending_proposal_count": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "new_risk_flags": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "target_ref": {
+                            "type": "string",
+                            "format": "uuid"
+                          },
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "severity": {
+                            "type": "string",
+                            "enum": [
+                              "low",
+                              "medium",
+                              "high"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "target_ref",
+                          "description"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "overnight_changes",
+                    "tasks_due_today",
+                    "pending_proposal_count",
+                    "new_risk_flags"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "kind",
+                "scope",
+                "data"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "enqueued_at",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/Job/anyOf/0/properties/id"
+            },
+            "enqueued_at": {
+              "$ref": "#/definitions/Job/anyOf/0/properties/enqueued_at"
+            },
+            "kind": {
+              "type": "string",
+              "const": "notification"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "priority": {
+                  "type": "string",
+                  "enum": [
+                    "digest",
+                    "alert",
+                    "high_risk",
+                    "date_conflict"
+                  ]
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "body": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "deep_link": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "priority",
+                "title",
+                "body"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "enqueued_at",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,28 @@
+{
+  "$ref": "#/definitions/ResolveProposalOutput",
+  "definitions": {
+    "ResolveProposalOutput": {
+      "type": "object",
+      "properties": {
+        "proposal_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "approved",
+            "rejected",
+            "edited_and_approved"
+          ]
+        }
+      },
+      "required": [
+        "proposal_id",
+        "state"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

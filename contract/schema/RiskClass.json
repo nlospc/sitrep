@@ -1,0 +1,13 @@
+{
+  "$ref": "#/definitions/RiskClass",
+  "definitions": {
+    "RiskClass": {
+      "type": "string",
+      "enum": [
+        "low",
+        "high"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

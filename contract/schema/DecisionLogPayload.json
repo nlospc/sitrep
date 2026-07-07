@@ -1,0 +1,24 @@
+{
+  "$ref": "#/definitions/DecisionLogPayload",
+  "definitions": {
+    "DecisionLogPayload": {
+      "type": "object",
+      "properties": {
+        "target_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "decision_text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "target_ref",
+        "decision_text"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,45 @@
+{
+  "$ref": "#/definitions/ResolveProposalInput",
+  "definitions": {
+    "ResolveProposalInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "action": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "approve"
+            },
+            {
+              "type": "string",
+              "const": "reject"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "edit": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              },
+              "required": [
+                "edit"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "action"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,93 @@
+{
+  "$ref": "#/definitions/DigestData",
+  "definitions": {
+    "DigestData": {
+      "type": "object",
+      "properties": {
+        "overnight_changes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "entity_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "entity_kind": {
+                "type": "string",
+                "enum": [
+                  "project",
+                  "milestone",
+                  "task"
+                ]
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "proposal_id": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "entity_ref",
+              "entity_kind",
+              "summary",
+              "proposal_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "tasks_due_today": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "pending_proposal_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "new_risk_flags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "target_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              }
+            },
+            "required": [
+              "target_ref",
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "overnight_changes",
+        "tasks_due_today",
+        "pending_proposal_count",
+        "new_risk_flags"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

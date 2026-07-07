@@ -1,0 +1,44 @@
+{
+  "$ref": "#/definitions/Milestone",
+  "definitions": {
+    "Milestone": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "project_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "planned_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "current_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "last_signal_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "project_ref",
+        "name",
+        "planned_date",
+        "current_date",
+        "last_signal_at"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

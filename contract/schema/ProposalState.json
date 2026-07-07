@@ -1,0 +1,15 @@
+{
+  "$ref": "#/definitions/ProposalState",
+  "definitions": {
+    "ProposalState": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "edited_and_approved"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

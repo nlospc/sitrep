@@ -1,0 +1,27 @@
+{
+  "$ref": "#/definitions/MilestoneShiftPayload",
+  "definitions": {
+    "MilestoneShiftPayload": {
+      "type": "object",
+      "properties": {
+        "milestone_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "new_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "milestone_ref",
+        "new_date"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

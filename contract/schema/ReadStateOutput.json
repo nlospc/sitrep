@@ -1,0 +1,148 @@
+{
+  "$ref": "#/definitions/ReadStateOutput",
+  "definitions": {
+    "ReadStateOutput": {
+      "type": "object",
+      "properties": {
+        "projects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "created_at"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "project_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "planned_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "current_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "last_signal_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "id",
+              "project_ref",
+              "name",
+              "planned_date",
+              "current_date",
+              "last_signal_at"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "project_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "milestone_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "owner": {
+                "type": "string"
+              },
+              "due_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "todo",
+                  "in_progress",
+                  "blocked",
+                  "done"
+                ]
+              },
+              "provenance": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "project_ref",
+              "priority",
+              "state",
+              "provenance"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "projects",
+        "milestones",
+        "tasks"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

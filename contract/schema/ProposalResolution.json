@@ -1,0 +1,39 @@
+{
+  "$ref": "#/definitions/ProposalResolution",
+  "definitions": {
+    "ProposalResolution": {
+      "type": "object",
+      "properties": {
+        "resolved_by": {
+          "type": "string",
+          "enum": [
+            "user",
+            "auto_policy"
+          ]
+        },
+        "resolved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "edit_diff": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": {}
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "resolved_by",
+        "resolved_at",
+        "edit_diff"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

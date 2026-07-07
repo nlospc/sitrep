@@ -1,0 +1,33 @@
+{
+  "$ref": "#/definitions/ProposalSource",
+  "definitions": {
+    "ProposalSource": {
+      "type": "object",
+      "properties": {
+        "channel": {
+          "type": "string",
+          "enum": [
+            "inbox",
+            "external",
+            "scheduled_review"
+          ]
+        },
+        "raw_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "channel",
+        "raw_text",
+        "captured_at"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

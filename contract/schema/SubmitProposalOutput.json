@@ -1,0 +1,27 @@
+{
+  "$ref": "#/definitions/SubmitProposalOutput",
+  "definitions": {
+    "SubmitProposalOutput": {
+      "type": "object",
+      "properties": {
+        "proposal_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "approved"
+          ]
+        }
+      },
+      "required": [
+        "proposal_id",
+        "state"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

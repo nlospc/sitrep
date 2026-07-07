@@ -1,0 +1,14 @@
+{
+  "$ref": "#/definitions/EntityKind",
+  "definitions": {
+    "EntityKind": {
+      "type": "string",
+      "enum": [
+        "project",
+        "milestone",
+        "task"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

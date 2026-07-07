@@ -1,0 +1,32 @@
+{
+  "$ref": "#/definitions/RiskFlagPayload",
+  "definitions": {
+    "RiskFlagPayload": {
+      "type": "object",
+      "properties": {
+        "target_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      },
+      "required": [
+        "target_ref",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

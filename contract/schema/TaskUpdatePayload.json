@@ -1,0 +1,45 @@
+{
+  "$ref": "#/definitions/TaskUpdatePayload",
+  "definitions": {
+    "TaskUpdatePayload": {
+      "type": "object",
+      "properties": {
+        "task_ref": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "patch": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "type": "string"
+            },
+            "due_date": {
+              "type": "string",
+              "format": "date"
+            },
+            "priority": {
+              "type": "string",
+              "enum": [
+                "low",
+                "medium",
+                "high"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "task_ref",
+        "patch"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

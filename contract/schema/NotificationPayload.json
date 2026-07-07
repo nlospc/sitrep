@@ -1,0 +1,37 @@
+{
+  "$ref": "#/definitions/NotificationPayload",
+  "definitions": {
+    "NotificationPayload": {
+      "type": "object",
+      "properties": {
+        "priority": {
+          "type": "string",
+          "enum": [
+            "digest",
+            "alert",
+            "high_risk",
+            "date_conflict"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deep_link": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "priority",
+        "title",
+        "body"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

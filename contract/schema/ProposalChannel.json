@@ -1,0 +1,14 @@
+{
+  "$ref": "#/definitions/ProposalChannel",
+  "definitions": {
+    "ProposalChannel": {
+      "type": "string",
+      "enum": [
+        "inbox",
+        "external",
+        "scheduled_review"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}
