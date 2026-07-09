@@ -54,6 +54,7 @@ export const RiskFlagPayload = z.object({
   description: z.string().min(1),
   severity: z.enum(["low", "medium", "high"]).optional(),
 });
+export type RiskFlagPayload = z.infer<typeof RiskFlagPayload>;
 
 export const DecisionLogPayload = z.object({
   target_ref: z.string().uuid(),
